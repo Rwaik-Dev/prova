@@ -1,0 +1,116 @@
+ROUTINE GeraDadosAvaliacao
+ KILL ^PROVA.DATA.AvaliacaoD
+GeraDadosAvaliacao ;
+
+ SET avaliacoes = ##class(%DynamicArray).%New()
+
+ //Avaliação 1
+    SET a = ##class(%DynamicObject).%New()
+    SET a.CodigoCandidato = 1
+    SET a.NomeDisciplina = "Algoritimo"
+    SET a.Tipo = "Teorica"
+    SET a.Nota = 5
+    DO avaliacoes.%Push(a)
+
+     //Avaliação 2
+    SET a = ##class(%DynamicObject).%New()
+    SET a.CodigoCandidato = 2
+    SET a.NomeDisciplina = "Algoritimo"
+    SET a.Tipo = "Teorica"
+    SET a.Nota = 7
+    DO avaliacoes.%Push(a)
+
+     //Avaliação 3
+    SET a = ##class(%DynamicObject).%New()
+    SET a.CodigoCandidato = 3
+    SET a.NomeDisciplina = "Algoritimo"
+    SET a.Tipo = "Teorica"
+    SET a.Nota = 2
+    DO avaliacoes.%Push(a)
+
+     //Avaliação 4
+    SET a = ##class(%DynamicObject).%New()
+    SET a.CodigoCandidato = 4
+    SET a.NomeDisciplina = "Algoritimo"
+    SET a.Tipo = "Teorica"
+    SET a.Nota = 10
+    DO avaliacoes.%Push(a)
+
+         //Avaliação 5
+    SET a = ##class(%DynamicObject).%New()
+    SET a.CodigoCandidato = 1
+    SET a.NomeDisciplina = "Infra"
+    SET a.Tipo = "Teorica"
+    SET a.Nota = 10
+    DO avaliacoes.%Push(a)
+ //Avaliação 6
+    SET a = ##class(%DynamicObject).%New()
+    SET a.CodigoCandidato = 2
+    SET a.NomeDisciplina = "Infra"
+    SET a.Tipo = "Teorica"
+    SET a.Nota = 3
+    DO avaliacoes.%Push(a)
+
+    //Avaliacao 7
+    SET a = ##class(%DynamicObject).%New()
+    SET a.CodigoCandidato = 3
+    SET a.NomeDisciplina = "Infra"
+    SET a.Tipo = "Teorica"
+    SET a.Nota = 6
+    DO avaliacoes.%Push(a)
+
+    //Avaliacao 8
+    SET a = ##class(%DynamicObject).%New()
+    SET a.CodigoCandidato = 4
+    SET a.NomeDisciplina = "Infra"
+    SET a.Tipo = "Teorica"
+    SET a.Nota = 8
+    DO avaliacoes.%Push(a)
+
+    //Avaliacao 9
+    SET a = ##class(%DynamicObject).%New()
+    SET a.CodigoCandidato = 1
+    SET a.NomeDisciplina = "Java"
+    SET a.Tipo = "Pratica"
+    SET a.Nota = 7
+    DO avaliacoes.%Push(a)
+
+    //Avaliacao 10
+    SET a = ##class(%DynamicObject).%New()
+    SET a.CodigoCandidato = 2
+    SET a.NomeDisciplina = "Java"
+    SET a.Tipo = "Pratica"
+    SET a.Nota = 9
+    DO avaliacoes.%Push(a)
+
+    //Avaliacao 11
+    SET a = ##class(%DynamicObject).%New()
+    SET a.CodigoCandidato = 3
+    SET a.NomeDisciplina = "Java"
+    SET a.Tipo = "Pratica"
+    SET a.Nota = 4
+    DO avaliacoes.%Push(a)
+
+    //Avaliacao 12
+    SET a = ##class(%DynamicObject).%New()
+    SET a.CodigoCandidato = 4
+    SET a.NomeDisciplina = "Java"
+    SET a.Tipo = "Pratica"
+    SET a.Nota = 1
+    DO avaliacoes.%Push(a)  
+
+
+    FOR i=0:1:avaliacoes.%Size() -1 {
+        WRITE "Cadastrando avaliações",!
+        SET cadAvaliacao = ##class(PROVA.DATA.Avaliacao).%New()
+
+        SET avaliacao = avaliacoes.%Get(i)
+
+        SET cadAvaliacao.CodigoCandidato = avaliacao.CodigoCandidato
+        SET cadAvaliacao.NomeDisciplina = avaliacao.NomeDisciplina
+        SET cadAvaliacao.Tipo = avaliacao.Tipo
+        SET cadAvaliacao.Nota = avaliacao.Nota
+
+        DO cadAvaliacao.%Save()
+
+    }

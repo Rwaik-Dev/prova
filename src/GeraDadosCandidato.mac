@@ -1,0 +1,47 @@
+ROUTINE GeraDadosCandidato
+ KILL ^PROVA.DATA.CandidatoD
+GeraDadosCandidato ;
+
+ SET candidatos = ##class(%DynamicArray).%New()
+
+ //Candidato 1
+    SET c = ##class(%DynamicObject).%New()
+    SET c.Nome = "Leonardo"
+    SET c.Idade = 25
+    SET c.Sexo = "Masculino"
+    SET c.CodigoCandidato = 1
+    DO candidatos.%Push(c)
+
+ //Candidato 2
+    SET c = ##class(%DynamicObject).%New()
+    SET c.Nome = "Rodrigo"
+    SET c.Idade = 43
+    SET c.Sexo = "Masculino"
+    SET c.CodigoCandidato = 2
+    DO candidatos.%Push(c)
+
+ //Candidato 3
+    SET c = ##class(%DynamicObject).%New()
+    SET c.Nome = "Amanda"
+    SET c.Idade = 34
+    SET c.Sexo = "Feminino"
+    SET c.CodigoCandidato = 3
+    DO candidatos.%Push(c)
+
+ //Candidato 4
+    SET c = ##class(%DynamicObject).%New()
+    SET c.Nome = "Claudia"
+    SET c.Idade = 27
+    SET c.Sexo = "Feminino"
+    SET c.CodigoCandidato = 4
+    DO candidatos.%Push(c)
+
+    FOR i=0:1:candidatos.%Size() - 1 {
+        SET c = candidatos.%Get(i)
+        SET r = ##class(PROVA.DATA.Candidato).%New()
+        SET r.Nome = c.Nome
+        SET r.Idade = c.Idade
+        SET r.Sexo = c.Sexo
+        SET r.CodigoCandidato = c.CodigoCandidato
+        DO r.%Save()
+    }
