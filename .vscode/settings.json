@@ -2,6 +2,6 @@
     "objectscript.conn": {
         "server": "iris",
         "ns": "PROVA",
-        "active": false
+        "active": true
     }
 }
